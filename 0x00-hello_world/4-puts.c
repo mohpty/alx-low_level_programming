@@ -1,10 +1,8 @@
 #include <stdio.h>
 
-/*
- * Prints a sentence using puts function.
- * */
 int main(void)
 {
+	/* printing a sentence using puts function */
 	puts("\"Programming is like building a multilingual puzzle");
 	return (0);
 }
