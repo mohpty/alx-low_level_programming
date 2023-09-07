@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+/**
+ * main - basically the whole program
+ */
 int main(void)
 {
 	/* printing a sentence using puts function */
