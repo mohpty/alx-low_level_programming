@@ -6,21 +6,19 @@
  */
 int main(void)
 {
-	unsigned long int x, y, temp, i;
+	int count;
+	unsigned long fib1 = 0, fib2 = 1, sum;
 
-	x = 1;
-	y = 2;
-	printf("1, 2, ");
-	for (i = 0; i < 49; i++)
+	for (count = 0; count < 50; count++)
 	{
-		temp = x + y;
-		x = y;
-		y = temp;
-		printf("%lu", y);
-		if (i != 48)
+		sum = fib1 + fib2;
+		fib1 = fib2;
+		fib2 = sum;
+
+		if (count == 49)
+			printf("\n");
+		else
 			printf(", ");
 	}
-	puts("\n");
-
 	return (0);
 }
