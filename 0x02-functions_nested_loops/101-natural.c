@@ -20,5 +20,5 @@ int main(void)
 		}
 	}
 
-	printf("%d\n", total);
+	printf("%ld\n", total);
 	return (0); }

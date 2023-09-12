@@ -29,7 +29,7 @@ int main(void)
 			break;
 		}
 	}
-	printf("%.0f\n", total);
+	printf("%.0f\n", total+2);
 
 	return (0);
 }
