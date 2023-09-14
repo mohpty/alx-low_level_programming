@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * print_traingle - self explanatory
+ * print_triangle - self explanatory
  * @size: height of the triangle
  * Return: void
  */
 void print_triangle(int size)
 {
 	int i, s, h;
-	
+
 	if (size <= 0)
 	{
 		_putchar('\n');
