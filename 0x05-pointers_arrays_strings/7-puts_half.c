@@ -20,24 +20,33 @@ void puts_half(char *str)
 	}
 
 	if (size % 2 == 1)
-		center = (size - 1) / 2;
+	{
+		cnt -= ((size - 1) / 2) + 1;
+		while(*cnt != '\0')
+		{
+			write(1, cnt, 1);
+			cnt++;
+		}
+	}
 	else
+	{
 		center = size / 2;
 
 	while (*str != '\0')
 	{
-		if (index <= center)
-		{
-			index++;
-			str++;
-			continue;
-		}
-		else
-		{
-			write(1, str, 1);
-			str++;
-		}
+			if (index <= center)
+			{
+				index++;
+				str++;
+				continue;
+			}
+			else
+			{
+				write(1, str, 1);
+				str++;
+			}
 
+		}
 	}
 	cnt = &spc;
 	write(1, cnt, 1);

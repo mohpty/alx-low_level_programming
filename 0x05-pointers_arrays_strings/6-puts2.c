@@ -1,7 +1,7 @@
 #include "main.h"
 #include <unistd.h>
 /**
- * _puts2 - print every other char
+ * puts2 - print every other char
  * @str: string
  * Return: void
  */
