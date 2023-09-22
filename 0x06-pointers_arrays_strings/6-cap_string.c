@@ -5,27 +5,31 @@
  * @c: pointer to the char
  * Return: 1 if true, 0 otherwise
  */
-int is_delimiter(char *c)
+int is_delimiter(char c)
 {
-	switch (*c)
+	int i;
+	char dels[] = " \t\n,;.!?\"(){}";
+
+	for (i = 0; i < 12; i++)
 	{
-		case '}':
-		case '{':
-		case ')':
-		case '(':
-		case '\"':
-		case '?':
-		case '!':
-		case '.':
-		case ';':
-		case ',':
-		case '\n':
-		case '\t':
-		case ' ':
+		if (dels[i] == c)
+		{
 			return (1);
-		default:
-			return (0);
+		}
 	}
+
+	return (0);
+}
+
+
+/**
+ * is_lower - returns if a character is lowercase
+ * @c: character to test.
+ * Return: 1 if lowercase, 0 otherwise.
+ */
+int is_lower(char c)
+{
+	return (c >= 97 && c <= 122);
 }
 
 
@@ -37,29 +41,23 @@ int is_delimiter(char *c)
 char *cap_string(char *s)
 {
 	char *p1 = s;
-	int cap = 0;
+	int cap = 1;
 
-	while (*p1 != '\0')
+	while (*p1)
 	{
-		if (cap)
+		if (is_delimiter(*p1))
 		{
-			if (*p1 >= 97 && *p1 < 123)
-			{
-				*p1 = *p1 - 32;
-				cap = 0;
-			}
-			else if (*p1 >= 65 && *p1 <= 90)
-			{
-				cap = 0;
-			}
-			p1++;
-			continue;
-		}
-
-		if (is_delimiter(p1))
 			cap = 1;
-		p1++;
+		}
+		else if (is_lower(*p1) && cap)
+		{
+			*p1 -= 32;
+			cap = 0;
+		}
+		else
+			cap = 0;
 
+		p1++;
 	}
 
 	return (s);
