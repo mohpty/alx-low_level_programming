@@ -20,7 +20,7 @@ int is_plnd(char *s, int i, int len)
 	if (i >= len)
 		return (1);
 
-	return (is_plnd(s, i + 1, len - 1));
+	return (is_plnd(s, i + 1, len));
 
 }
 
@@ -28,5 +28,5 @@ int is_palindrome(char *s)
 {
 	char *p = s;
 
-	return is_plnd(s, 0, count(p));
+	return is_plnd(s, 0, count(p) - 1);
 }
