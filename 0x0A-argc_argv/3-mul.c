@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
- * main  - return the result of multiplication
+ * mul  - return the result of multiplication
  * @argc: number of command line arguments
  * @argv: what are the command line arguments passed
  * Return: 0 always
  */
-int main(int argc, char *argv[])
+int mul(int argc, char *argv[])
 {
 	int a, b, r;
 
@@ -20,5 +20,17 @@ int main(int argc, char *argv[])
 	b = atoi(argv[2]);
 	r = a * b;
 	printf("%d\n", r);
+	return (0);
+}
+
+/**
+ * main - driver code
+ * @argc: number of cla
+ * @argv: array of cla
+ * Return: always 0
+ */
+int main(int argc, char *argv[])
+{
+	mul(argc, argv);
 	return (0);
 }
