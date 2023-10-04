@@ -9,43 +9,38 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	char *cnt1, *cnt2, *arr, *ptr;
-	int size1, size2;
+	char *conc;
+	unsigned int i, j, size1, size2;
 
-	size1 = size2 = 0;
-	cnt1 = s1;
-	cnt2 = s2;
-	
-	while (*cnt1 != '\0' && cnt1)
-	{
+	i = j = size1 = size2 = 0;
+
+	while (s1 && s1[size1])
 		size1++;
-		cnt1++;
-	}
-	while (*cnt2 != '\0' && cnt2)
-	{
+
+	while (s2 && s2[size2])
 		size2++;
-		cnt2++;
-	}
 
-	arr = (char *) malloc(size1 + size2 + 1 * sizeof(char));
-	ptr = arr;
-
-	if (arr == NULL)
+	conc = malloc(sizeof(char) * (size1 + size2 + 1));
+	if (conc == NULL)
 		return (NULL);
 
-	while (*s1 != '\0')
+	if (s1)
 	{
-		*ptr = *s1;
-		ptr++;
-		s1++;
+		while (i < size1)
+		{
+			conc[i] = s1[i];
+			i++;
+		}
 	}
-	while (*s2 != '\0')
+	if (s2)
 	{
-		*ptr = *s2;
-		ptr++;
-		s2++;
+		while (i < (size1 + size2))
+		{
+			conc[i] = s2[j];
+			i++;
+			j++;
+		}
 	}
-	*ptr = '\0';
-
-	return (arr);
+	conc[i] = '\0';
+	return (conc);
 }
