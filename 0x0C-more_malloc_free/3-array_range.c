@@ -5,22 +5,22 @@
  * array_range - allocates array in memory
  * @min: number of elements
  * @max: number of bytes per element
- * Return: void
+ * Return: pointer to new array
  */
 int *array_range(int min, int max)
 {
-	int *p1, *ptr, i;
+	int *p1;
+	int i, size;
 
-	p1 = (int *) malloc(sizeof(int) * (max - min) + 1);
-	if (p1 == NULL || min > max)
+	if (min > max)
 		return (NULL);
-	ptr = p1;
 
-	for (i = min; i <= max; i++)
-	{
-		*p1 = i;
-		p1++;
-	}
+	p1 = malloc(sizeof(int) * (max - min + 1));
+	if (ptr == NULL)
+		return (NULL);
+
+	for (i = 0; min <= max; i++)
+		ptr[i] = min++;
 
 	return (ptr);
 }
