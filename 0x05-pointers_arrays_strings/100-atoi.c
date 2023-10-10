@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * _atoi - convert a string to integer
@@ -7,36 +8,71 @@
  */
 int _atoi(char *s)
 {
-	bool began = false;
-	int minus, plus, total;
+	/**
+	 * sign:
+	 * 	start from LtoR
+	 * 	we count all - and +, the bigger one wins
+	 * 	if equal the most recent one wins
+	 *
+	 * numbers:
+	 * 	start from RtoL
+	 * 	first digit is multiply by 1
+	 * 	second digit is multiply by 10
+	 * 	...
+	 * 	nth digit is multiply by i (1, 10, 100,..)
+	 */
 
-	plus = minus = total = 0;
+	/*char recent;*/
+	int cntP, cntM;
+	/*int digit = 1;*/
+	char *p1 = s;
+	char *p2 = s;
+	int started = 0;
+	char *out = "";
 
-	while (*s != '\0')
+	cntP = cntM = 0;
+	while (*p1 != '\0')
 	{
-		if (! (*s >= 48 || *s < 58 || *s == 43 || *s == 45))
+		if (*p1 == '-')
 		{
-			/* if it isn't a digit or a sign */
-			if (began)
-				break; /* break if we end collecting our num */
-			else
-				continue; /* or just ignore it */
+			cntM++;
+		}
+		else
+		{
+			cntP++;
 		}
 
-		if (*s >= 48 || *s < 58)
-		{
-			began = true;
-
-		}
-		else if (*s == 43)
-		{
-			plus++;
-		}
-		else if (*s == 45)
-		{
-			minus++;
-		}
-		
-
+		p1++;
 	}
+
+	
+
+	while (1)
+	{
+		if (*p2 >= 48 || *p2 < 58)
+		{
+			started = 1;
+			out += *p2;
+		}
+		else
+		{
+			if (started)
+			{
+				break;
+			}
+			else
+			{
+				p2++;
+				continue;
+			}
+
+		}
+		if (*p2 == '\0')
+			break;
+		p2++;
+	}
+
+	printf("%s\n", out);
+
+	return (0);
 }
