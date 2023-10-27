@@ -1,13 +1,19 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
- * get_bit - get the state of a given index in binary representation
- * of the number given
- * @n: number
- * @index: the bit asked for
- * Return: bit value, 0 or 1
+ * get_bit - get the value of a bit at a given index
+ * @n: number to evaluate
+ * @index: index starting from 0, of the bit we want to get
+ * Return: Value of bit at index, or -1 if error
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	return ((1 << index) & n ? 1 : 0);
+	unsigned long int hold;
+
+	if (index > 64)
+		return (-1);
+
+	hold = n >> index;
+
+	return (hold & 1);
 }
